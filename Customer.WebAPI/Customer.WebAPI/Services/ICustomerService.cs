@@ -13,5 +13,9 @@ namespace Customer.WebAPI.Services
         Task<CustomerConfiguration> GetRequestByFileName(string fileName);
 
         string GetFilePath(string fileName);
+
+        string GetContentType(string fileName);
+
+        string GetFilePathDownloadFile(string fileName);
     }
 }

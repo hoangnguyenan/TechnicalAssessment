@@ -27,8 +27,6 @@ namespace Customer.WebAPI.Repositories
 
             if (!string.IsNullOrWhiteSpace(param.SearchKey))
             {
-                // _logger.LogInformation($"Search with search key {param.SearchKey}");
-
                 _databaseContext.CustomerRequests.Where(x => x.OutletName.Equals(param.SearchKey.Trim()));
             }
 

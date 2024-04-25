@@ -13,8 +13,28 @@ namespace Customer.WebAPI
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
+                    webBuilder.ConfigureAppConfiguration((hostContext, options) =>
+                   {
+                       options.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                              .AddJsonFile($"appsettings.{hostContext.HostingEnvironment.EnvironmentName}.json",
+                              optional: true, reloadOnChange: true);
+
+                       options.AddEnvironmentVariables();
+
+                       options.AddCommandLine(args);
+                   });
+                   
                     webBuilder.UseStartup<Startup>();
                 })
-                .UseSerilog();
+                .UseSerilog((hostingContext, loggerConfiguration) =>
+                {
+                    loggerConfiguration.ReadFrom
+                                .Configuration(hostingContext.Configuration).Enrich.FromLogContext();
+                })
+                .ConfigureLogging(loggingBuilder =>
+                {
+                    loggingBuilder.ClearProviders();
+                    loggingBuilder.AddSerilog();
+                });
     }
 }

@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Customer.WebAPI.Constants;
 using Customer.WebAPI.Dtos;
-using Customer.WebAPI.Helpers;
 using Customer.WebAPI.Services;
 
 namespace Customer.WebAPI.Controllers
@@ -40,10 +39,12 @@ namespace Customer.WebAPI.Controllers
 
         [HttpGet("download")]
         public IActionResult DownloadFile(string fileName)
-        {
-            var filePath = _customerService.GetFilePath(fileName);
+        {            
+            var filePath = _customerService.GetFilePathDownloadFile(fileName);
 
-            return PhysicalFile(filePath, CommonConstant.PdfFileType, fileName);
+            var contentType = _customerService.GetContentType(fileName);
+
+            return PhysicalFile(filePath, contentType, fileName);
         }
     }
 

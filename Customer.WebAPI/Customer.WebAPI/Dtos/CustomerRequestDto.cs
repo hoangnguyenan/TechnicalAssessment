@@ -35,7 +35,7 @@ namespace Customer.WebAPI.Dtos
 
             RuleFor(x => x.File)
                 .NotNull().WithMessage(CustomerConstants.FileRequiredErrorMessage)
-                .Must(file => file.Length < 20 * 1024 * 1024).WithMessage(CustomerConstants.FileLengthErrorMessage);
+                .Must(file => file.Length <= 20 * 1024 * 1024).WithMessage(CustomerConstants.FileLengthErrorMessage);
         }
     }
 }

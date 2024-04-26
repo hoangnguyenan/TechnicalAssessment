@@ -16,18 +16,18 @@ namespace Customer.WebAPI.Repositories
 
         public async Task InsertAsync(CustomerConfiguration customer)
         {
-            await _databaseContext.CustomerRequests.AddAsync(customer);
+            await _databaseContext.CustomerConfigurations.AddAsync(customer);
 
             await _databaseContext.SaveChangesAsync();
         }
 
         public async Task<PageResultDto<CustomerConfiguration>> GetCustomerPagingAsync(QuerySearchDefault param)
         {
-            var query = _databaseContext.CustomerRequests.AsQueryable();
+            var query = _databaseContext.CustomerConfigurations.AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(param.SearchKey))
             {
-                _databaseContext.CustomerRequests.Where(x => x.OutletName.Equals(param.SearchKey.Trim()));
+                _databaseContext.CustomerConfigurations.Where(x => x.OutletName.Equals(param.SearchKey.Trim()));
             }
 
             if (string.IsNullOrWhiteSpace(param.SortField))
@@ -44,7 +44,7 @@ namespace Customer.WebAPI.Repositories
 
         public async Task<CustomerConfiguration> GetCustomerByFileNameAsync(string fileName)
         {
-            return await _databaseContext.CustomerRequests.FirstOrDefaultAsync(x => x.FileName == fileName);
+            return await _databaseContext.CustomerConfigurations.FirstOrDefaultAsync(x => x.FileName == fileName);
         }
     }
 }

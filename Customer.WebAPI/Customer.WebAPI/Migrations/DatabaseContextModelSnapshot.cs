@@ -27,17 +27,20 @@ namespace Customer.WebAPI.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("FileName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("OutletName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhoneNumber")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("CustomerRequests");
+                    b.ToTable("CustomerConfigurations");
                 });
 #pragma warning restore 612, 618
         }

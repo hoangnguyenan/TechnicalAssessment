@@ -11,12 +11,6 @@ namespace Customer.WebAPI.Extensions
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Heineken.WebApi", Version = "v1" });
-
-                // var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-
-                // var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-
-                // c.IncludeXmlComments(xmlPath);
             });
 
             return services;

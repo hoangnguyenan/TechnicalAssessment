@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Customer.WebAPI.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20240425175814_add-new-database")]
+    [Migration("20240426053200_add-new-database")]
     partial class addnewdatabase
     {
         /// <inheritdoc />
@@ -30,17 +30,20 @@ namespace Customer.WebAPI.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("FileName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("OutletName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhoneNumber")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("CustomerRequests");
+                    b.ToTable("CustomerConfigurations");
                 });
 #pragma warning restore 612, 618
         }

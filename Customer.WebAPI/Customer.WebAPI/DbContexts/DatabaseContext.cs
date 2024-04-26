@@ -17,6 +17,6 @@ namespace Customer.WebAPI.DbContexts
             base.OnModelCreating(modelBuilder);
         }
 
-        public DbSet<CustomerConfiguration> CustomerRequests { get; set; }
+        public DbSet<CustomerConfiguration> CustomerConfigurations { get; set; }
     }
 }

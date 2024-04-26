@@ -43,6 +43,8 @@ namespace Customer.WebAPI
         private static void AddRepositories(IServiceCollection services)
         {
             services.AddScoped<ICustomerRepository, CustomerRepository>();
+
+            services.AddScoped<MigrationDatabase>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

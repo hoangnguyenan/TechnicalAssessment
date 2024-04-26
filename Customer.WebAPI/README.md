@@ -1,4 +1,6 @@
 # Command line migration database use dotnet ef
 
-dotnet ef migrations add add-new-database --output-dir Migrations
+create folder at: D:uploads-heineken before run
+
+dotnet ef migrations add add-new-database
 dotnet ef database update

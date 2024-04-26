@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Customer.WebAPI.Constants;
 using Customer.WebAPI.Dtos;
 using Customer.WebAPI.Services;
 
